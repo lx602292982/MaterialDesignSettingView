@@ -18,23 +18,19 @@ import java.io.File;
  * Created by lixiang on 2017/3/16.
  */
 
-public class SettingFramgent extends PreferenceFragment {
+public class SettingFragment extends PreferenceFragment implements Preference.OnPreferenceClickListener {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.preferences);
 
-
-        CheckBoxPreference checkboxPref = (CheckBoxPreference) getPreferenceManager()
-                .findPreference(getString(R.string.save_net_mode));
-
-
-        CheckBoxPreference checkbox = (CheckBoxPreference) getPreferenceManager()
-                .findPreference(getString(R.string.save_num_mode));
-
+        CheckBoxPreference checkboxPref = (CheckBoxPreference) getPreferenceManager().findPreference(getString(R.string.save_net_mode));
+        CheckBoxPreference checkbox = (CheckBoxPreference) getPreferenceManager().findPreference(getString(R.string.save_num_mode));
         Preference cachePref = getPreferenceManager().findPreference(getString(R.string.save_cache_mode));
         cachePref.setSummary(cachePref.getSummary() + getCacheSize());
+
+        cachePref.setOnPreferenceClickListener(this);
 
         checkbox.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
 
@@ -46,18 +42,7 @@ public class SettingFramgent extends PreferenceFragment {
             }
         });
 
-
-        cachePref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-                Logger.d(preference.getKey());
-                openAppInfo(getActivity());
-                return true;
-            }
-        });
-
         checkboxPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 boolean checked = Boolean.valueOf(newValue.toString());
@@ -86,5 +71,13 @@ public class SettingFramgent extends PreferenceFragment {
     private String getCacheSize() {
         File file = getActivity().getApplicationContext().getCacheDir();
         return MyUtils.getFileSize(file);
+    }
+
+
+    @Override
+    public boolean onPreferenceClick(Preference preference) {
+        Logger.d(preference.getKey());
+        openAppInfo(getActivity());
+        return true;
     }
 }
