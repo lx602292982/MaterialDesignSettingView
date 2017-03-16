@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">EasyBlur</string>
+    <string name="title_activity_setting">设置</string>
+    <string name="save_net_mode">1</string>
+    <string name="save_num_mode">2</string>
+    <string name="save_cache_mode">3</string>
+</resources>
