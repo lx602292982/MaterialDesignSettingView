@@ -11,8 +11,8 @@
         <CheckBoxPreference
             android:key="@string/save_net_mode"
             android:layout="@layout/preference_item"
-            android:summary="仅在Wi-Fi环境下才自动加载图片"
-            android:title="省流量模式"
+            android:summary="却换夜间模式和白天模式"
+            android:title="夜间模式"
             android:widgetLayout="@layout/switch_layout" />
         <CheckBoxPreference
             android:key="@string/save_num_mode"

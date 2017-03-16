@@ -20,7 +20,7 @@
             android:ellipsize="marquee"
             android:fadingEdge="horizontal"
             android:singleLine="true"
-            android:textColor="#111"
+            android:textColor="@color/black"
             android:textSize="16sp" />
 
         <TextView
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@android:id/title"
             android:text="summary"
-            android:textColor="#AAAAAA"
+            android:textColor="@color/base"
             android:textSize="14sp" />
 
     </RelativeLayout>
@@ -40,5 +40,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right|center_vertical"
         android:orientation="vertical" />
+
 
 </LinearLayout>
